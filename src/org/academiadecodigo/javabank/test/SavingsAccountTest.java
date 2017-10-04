@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.test;
 
+import org.academiadecodigo.javabank.domain.Account;
 import org.academiadecodigo.javabank.domain.AccountType;
 import org.academiadecodigo.javabank.domain.SavingsAccount;
 
@@ -7,7 +8,7 @@ public class SavingsAccountTest {
 
     public boolean test(){
 
-        SavingsAccount account = new SavingsAccount(1, 10);
+        Account account = new SavingsAccount(1, 10);
 
         //account should start with balance 0
         if(account.getBalance() != 0){
@@ -32,7 +33,9 @@ public class SavingsAccountTest {
         }
 
         //it should be possible to add interest
-        account.addInterest();
+        if (account instanceof SavingsAccount){
+            ((SavingsAccount)account).addInterest();
+        }
         if (account.getBalance() != 90){
             return false;
         }

@@ -3,6 +3,7 @@ package org.academiadecodigo.javabank.domain;
 public class SavingsAccount extends Account{
 
     private double interestRate;
+    public static final int MIN_SAVINGS_BALANCE = 100;
 
     public SavingsAccount(int id, float rate){
         super(id);
@@ -23,7 +24,7 @@ public class SavingsAccount extends Account{
 
     @Override
     public void debit(double amount) {
-        if(this.getBalance()-amount >= 100){
+        if(this.getBalance()-amount >= MIN_SAVINGS_BALANCE){
             this.setBalance(this.getBalance()-amount);
         }
     }

@@ -4,9 +4,9 @@ package org.academiadecodigo.javabank.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Customer {
+import static org.academiadecodigo.javabank.domain.SavingsAccount.MIN_SAVINGS_BALANCE;
 
-    public static final int MIN_SAVINGS_BALANCE = 100;
+public class Customer {
 
     private Map<Integer, Account> accounts = new HashMap<>();
 
