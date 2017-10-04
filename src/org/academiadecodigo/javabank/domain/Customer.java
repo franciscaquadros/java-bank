@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.domain;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,9 +10,9 @@ public class Customer {
 
     private Map<Integer, Account> accounts = new HashMap<>();
 
-    public void addAccount(Account account) {
-        accounts.put(account.getId(), account);
+    public void addAccount(Account account) { accounts.put(account.getId(), account);
     }
+
 
     public double getBalance(int id) {
         return accounts.get(id).getBalance();
