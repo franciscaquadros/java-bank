@@ -11,6 +11,7 @@ public class Customer {
 
     private AccountManager accountManager;
     private Map<Integer, Account> accounts = new HashMap<>();
+    private Option option;
 
     public void setAccountManager(AccountManager accountManager) {
         this.accountManager = accountManager;
@@ -37,4 +38,11 @@ public class Customer {
         return balance;
     }
 
+    public void setOption(Option option){
+        this.option = option;
+    }
+
+    public AccountManager getAccountManager() {
+        return accountManager;
+    }
 }
