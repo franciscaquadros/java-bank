@@ -21,8 +21,9 @@ public class MainMenuController implements Controller{
 
 
     public void init() {
-        mainMenuView.show();
         optionsMap = buildOptionsMap();
+        mainMenuView.show();
+        checkOption();
     }
 
     public void checkOption(){
@@ -31,7 +32,7 @@ public class MainMenuController implements Controller{
             return;
         }
 
-        optionsMap.get(menuOption).execute();
+        optionsMap.get(menuOption);
         checkOption();
 
     }
@@ -50,5 +51,6 @@ public class MainMenuController implements Controller{
 
         return map;
     }
+
 
 }
