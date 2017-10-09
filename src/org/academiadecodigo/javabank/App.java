@@ -16,9 +16,11 @@ public class App {
         Customer c1 = new Customer(1,"Rui");
         Customer c2 = new Customer(2,"Sergio");
         Customer c3 = new Customer(3,"Bruno");
+        Customer c4 = new Customer(4, "Francisca");
         bank.addCustomer(c1);
         bank.addCustomer(c2);
         bank.addCustomer(c3);
+        bank.addCustomer(c4);
 
         BankApplication bankApplication = new BankApplication(bank);
         bankApplication.start();
