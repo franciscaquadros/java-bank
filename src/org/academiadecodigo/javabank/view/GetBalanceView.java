@@ -8,6 +8,5 @@ public class GetBalanceView implements View{
 
     public void show(){
 
-
     }
 }
