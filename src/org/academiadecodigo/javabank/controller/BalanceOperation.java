@@ -19,7 +19,7 @@ public class BalanceOperation extends AbstractBankOperation {
     @Override
     public void execute() {
 
-        System.out.println("\n" + customer.getName() + Messages.BALANCE_MESSAGE + "\n");
+        //System.out.println("\n" + customer.getName() + Messages.BALANCE_MESSAGE + "\n");
 
         Set<Account> accounts = customer.getAccounts();
         for (Account account: accounts) {
