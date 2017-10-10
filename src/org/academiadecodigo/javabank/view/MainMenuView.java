@@ -2,6 +2,7 @@ package org.academiadecodigo.javabank.view;
 
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
+import org.academiadecodigo.javabank.controller.Controller;
 import org.academiadecodigo.javabank.controller.MainMenuController;
 import org.academiadecodigo.javabank.controller.Operation;
 import org.academiadecodigo.javabank.utils.Messages;
@@ -21,6 +22,8 @@ public class MainMenuView implements View{
         mainMenu.setMessage(Messages.MENU_WELCOME);
         mainController.setMenuOption(prompt.getUserInput(mainMenu));
     }
+
+    public void setController(MainMenuController mainController){this.mainController=mainController;}
 
 
 }

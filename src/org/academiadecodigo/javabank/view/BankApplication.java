@@ -33,4 +33,6 @@ public class BankApplication {
     public Prompt getPrompt() {
         return prompt;
     }
+
+    public int getAcessingCustomerId() {return bank.getAccessingCustomerId();}
 }

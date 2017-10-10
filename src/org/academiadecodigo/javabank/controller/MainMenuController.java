@@ -1,38 +1,30 @@
 package org.academiadecodigo.javabank.controller;
 
-import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.javabank.controller.transaction.DepositOperation;
-import org.academiadecodigo.javabank.controller.transaction.WithdrawOperation;
-import org.academiadecodigo.javabank.model.Bank;
-import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.utils.Messages;
-import org.academiadecodigo.javabank.view.MainMenuView;
 import org.academiadecodigo.javabank.view.UserOptions;
+import org.academiadecodigo.javabank.view.View;
 
-import javax.swing.text.html.Option;
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainMenuController implements Controller{
 
-    private MainMenuView mainMenuView;
-    private Map<Integer, Integer> optionsMap = new HashMap<>();
+    private View mainMenuView;
     private int menuOption;
+    private Map<Integer, UserOptions> optionsMap;
+    private Map<Integer, Controller> controllerMap;
 
 
     public void init() {
-        optionsMap = buildOptionsMap();
         mainMenuView.show();
         checkOption();
     }
 
     public void checkOption(){
 
-        if (optionsMap.get(menuOption)== UserOptions.QUIT.getOption()) {
+        if (optionsMap.get(menuOption)== UserOptions.QUIT) {
             return;
         }
 
-        optionsMap.get(menuOption);
+        controllerMap.get(optionsMap.get(menuOption)).init();
         checkOption();
 
     }
@@ -41,16 +33,14 @@ public class MainMenuController implements Controller{
         this.menuOption = menuOption;
     }
 
-    private Map<Integer, Integer> buildOptionsMap() {
-
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(1,UserOptions.GET_BALANCE.getOption());
-        map.put(2,UserOptions.DEPOSIT.getOption());
-        map.put(3,UserOptions.WITHDRAW.getOption());
-        map.put(4,UserOptions.OPEN_ACCOUNT.getOption());
-
-        return map;
+    public void setOptionsMap(Map optionsMap){
+        this.optionsMap = optionsMap;
     }
 
+    public void setControllerMap(Map controllerMap){
+        this.controllerMap = controllerMap;
+    }
+
+    public void setView(View mainMenuView) {this.mainMenuView = mainMenuView;}
 
 }
