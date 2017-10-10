@@ -21,6 +21,8 @@ public class Customer {
         accounts.put(account.getId(), account);
     }
 
+    public void removeAccount(Account account){accounts.remove(account);}
+
     public Set<Account> getAccounts() {
         return new HashSet<>(accounts.values());
     }

@@ -21,7 +21,10 @@ public class Bootstrap {
 
         CustomerService customerService = new CustomerService();
         AccountService accountService = new AccountService();
+        AuthenticationService authenticationService = new AuthenticationService();
         customerService.setAccountService(accountService);
+        authenticationService.setCustomerService(customerService);
+        accountService.setAuthenticationService(authenticationService);
 
         Customer c1 = new Customer(1, "Rui");
         Customer c2 = new Customer(2, "Sergio");

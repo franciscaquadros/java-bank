@@ -11,6 +11,7 @@ public class AccountService {
 
     private AccountFactory accountFactory = new AccountFactory();
     private Map<Integer, Account> accountMap;
+    private AuthenticationService authenticationService;
 
     public AccountService() {
         accountMap = new HashMap<>();
@@ -50,5 +51,17 @@ public class AccountService {
             srcAccount.debit(amount);
             dstAccount.credit(amount);
         }
+    }
+
+    public int createAccount() {
+
+        Account newAccount = openAccount(AccountType.CHECKING);
+        authenticationService.getAuthenticatedCustomer().addAccount(newAccount);
+
+        return newAccount.getId();
+    }
+
+    public void setAuthenticationService(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
     }
 }

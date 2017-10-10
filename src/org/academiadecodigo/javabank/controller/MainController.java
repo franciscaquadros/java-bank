@@ -1,5 +1,8 @@
 package org.academiadecodigo.javabank.controller;
 
+
+import org.academiadecodigo.bootcamp.Prompt;
+import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
 import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.services.AuthenticationService;
 import org.academiadecodigo.javabank.view.Messages;
@@ -29,6 +32,14 @@ public class MainController extends AbstractController {
         controllerMap.get(option).init();
         init();
 
+    }
+
+    public void showMenu(Prompt prompt) {
+
+        MenuInputScanner scanner = new MenuInputScanner(UserOptions.getMessages());
+        scanner.setError(Messages.VIEW_MAIN_ERROR);
+        scanner.setMessage("\n" + Messages.VIEW_MAIN_MESSAGE + getLoginCustomer().getName());
+        onMenuSelection(prompt.getUserInput(scanner));
     }
 
     public Customer getLoginCustomer(){
