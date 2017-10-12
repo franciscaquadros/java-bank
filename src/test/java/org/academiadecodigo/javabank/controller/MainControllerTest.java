@@ -5,25 +5,31 @@ import org.academiadecodigo.javabank.view.UserOptions;
 import org.academiadecodigo.javabank.view.View;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.mockito.Mockito.when;
-
-
 public class MainControllerTest {
 
     private MainController mainController;
     private View view;
+    private Map<Integer, Controller> controllerMap = new HashMap<>();
+    private Controller controller1;
+    private Controller controller2;
 
     @Before
     public void setupUp(){
         mainController = new MainController();
         view = Mockito.mock(View.class);
         mainController.setView(view);
+
+        controller1 = Mockito.mock(BalanceController.class);
+        controller2 = Mockito.mock(DepositController.class);
+
+        controllerMap.put(UserOptions.GET_BALANCE.getOption(), controller1);
+        controllerMap.put(UserOptions.DEPOSIT.getOption(), controller2);
+        mainController.setControllerMap(controllerMap);
 
     }
 
@@ -34,7 +40,9 @@ public class MainControllerTest {
     }
 
     @Test
-    public void onMenuSelectionQuit(){
+    public void onMenuSelectionQuitTest(){
+        mainController.onMenuSelection(UserOptions.QUIT.getOption());
+
 
 
     }
