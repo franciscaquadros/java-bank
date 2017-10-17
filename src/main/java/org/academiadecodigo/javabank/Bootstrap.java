@@ -5,10 +5,14 @@ import org.academiadecodigo.javabank.controller.*;
 import org.academiadecodigo.javabank.controller.transaction.DepositController;
 import org.academiadecodigo.javabank.controller.transaction.WithdrawalController;
 import org.academiadecodigo.javabank.factories.AccountFactory;
-import org.academiadecodigo.javabank.model.Customer;
-import org.academiadecodigo.javabank.services.AccountService;
-import org.academiadecodigo.javabank.services.CustomerService;
+import org.academiadecodigo.javabank.managers.JpaSessionManager;
+import org.academiadecodigo.javabank.managers.JpaTransactionManager;
+import org.academiadecodigo.javabank.managers.TransactionManager;
+import org.academiadecodigo.javabank.persistence.dao.JpaAccountDao;
+import org.academiadecodigo.javabank.persistence.dao.JpaCustomerDao;
 import org.academiadecodigo.javabank.services.AuthServiceImpl;
+import org.academiadecodigo.javabank.services.jpa.JpaAccountService;
+import org.academiadecodigo.javabank.services.jpa.JpaCustomerService;
 import org.academiadecodigo.javabank.view.*;
 
 import java.util.HashMap;
@@ -17,8 +21,14 @@ import java.util.Map;
 public class Bootstrap {
 
     private AuthServiceImpl authService;
-    private CustomerService customerService;
-    private AccountService accountService;
+    private JpaCustomerService customerService;
+    private JpaAccountService accountService;
+    private JpaAccountDao accountDao;
+    private JpaCustomerDao customerDao;
+
+    private JpaTransactionManager transactionManager;
+    private JpaSessionManager sessionManager;
+
 
     public Controller wireObjects() {
 
@@ -27,6 +37,15 @@ public class Bootstrap {
 
         // wire services
         authService.setCustomerService(customerService);
+
+        //Set DAOs
+        customerService.setCustomerDao(customerDao);
+        accountService.setAccountDao(accountDao);
+
+        //Set managers
+        transactionManager.setSessionManager(sessionManager);
+        customerService.setTransactionManager(transactionManager);
+        accountService.setTransactionManager(transactionManager);
 
         // wire login controller and view
         LoginController loginController = new LoginController();
@@ -96,11 +115,27 @@ public class Bootstrap {
         this.authService = authService;
     }
 
-    public void setCustomerService(CustomerService customerService) {
+    public void setCustomerService(JpaCustomerService customerService) {
         this.customerService = customerService;
     }
 
-    public void setAccountService(AccountService accountService) {
+    public void setAccountService(JpaAccountService accountService) {
         this.accountService = accountService;
+    }
+
+    public void setAccountDao(JpaAccountDao accountDao) {
+        this.accountDao = accountDao;
+    }
+
+    public void setCustomerDao(JpaCustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
+
+    public void setTransactionManager(JpaTransactionManager transactionManager) {
+        this.transactionManager = transactionManager;
+    }
+
+    public void setSessionManager(JpaSessionManager sessionManager) {
+        this.sessionManager = sessionManager;
     }
 }

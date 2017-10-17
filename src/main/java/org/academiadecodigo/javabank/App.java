@@ -1,12 +1,16 @@
 package org.academiadecodigo.javabank;
 
 import org.academiadecodigo.javabank.controller.Controller;
+import org.academiadecodigo.javabank.managers.JpaSessionManager;
+import org.academiadecodigo.javabank.managers.JpaTransactionManager;
+import org.academiadecodigo.javabank.model.Customer;
+import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.persistence.H2WebServer;
+import org.academiadecodigo.javabank.persistence.dao.JpaAccountDao;
+import org.academiadecodigo.javabank.persistence.dao.JpaCustomerDao;
 import org.academiadecodigo.javabank.services.jpa.JpaAccountService;
 import org.academiadecodigo.javabank.services.jpa.JpaCustomerService;
 import org.academiadecodigo.javabank.services.AuthServiceImpl;
-import org.academiadecodigo.javabank.services.mock.MockAccountService;
-import org.h2.tools.Server;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -42,6 +46,10 @@ public class App {
         bootstrap.setAuthService(new AuthServiceImpl());
         bootstrap.setAccountService(new JpaAccountService(emf));
         bootstrap.setCustomerService(new JpaCustomerService(emf));
+        bootstrap.setAccountDao(new JpaAccountDao(Account.class));
+        bootstrap.setCustomerDao(new JpaCustomerDao(Customer.class));
+        bootstrap.setTransactionManager(new JpaTransactionManager());
+        bootstrap.setSessionManager(new JpaSessionManager());
 
         Controller controller = bootstrap.wireObjects();
 
