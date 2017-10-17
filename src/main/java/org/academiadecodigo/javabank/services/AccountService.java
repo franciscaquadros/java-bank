@@ -1,8 +1,9 @@
 package org.academiadecodigo.javabank.services;
 
 import org.academiadecodigo.javabank.model.account.Account;
+import org.academiadecodigo.javabank.persistence.dao.GenericDao;
 
-public interface AccountService extends genericDao<Account> {
+public interface AccountService extends GenericDao<Account> {
 
     void deposit(Integer id, double amount);
 

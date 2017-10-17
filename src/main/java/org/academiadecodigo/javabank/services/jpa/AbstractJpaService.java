@@ -1,7 +1,7 @@
 package org.academiadecodigo.javabank.services.jpa;
 
 import org.academiadecodigo.javabank.model.AbstractModel;
-import org.academiadecodigo.javabank.services.genericDao;
+import org.academiadecodigo.javabank.persistence.dao.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public abstract class AbstractJpaService<T extends AbstractModel> implements genericDao<T> {
+public abstract class AbstractJpaService<T extends AbstractModel> implements GenericDao<T> {
 
     protected EntityManagerFactory emf;
     private Class<T> modelType;
@@ -80,14 +80,14 @@ public abstract class AbstractJpaService<T extends AbstractModel> implements gen
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(T modelObject) {
 
         EntityManager em = emf.createEntityManager();
 
         try {
 
             em.getTransaction().begin();
-            em.remove(em.find(modelType, id));
+            em.remove(em.find(modelType, modelObject));
             em.getTransaction().commit();
 
         } catch (RollbackException ex) {
