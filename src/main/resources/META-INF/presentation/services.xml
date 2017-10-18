@@ -3,18 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <import resource="classpath:META-INF/persistence/daos.xml"/>
+
     <bean id="accountService" class="org.academiadecodigo.javabank.services.AccountServiceImpl">
-        <property name="accountDao" value="accountDao"></property>
-        <property name="transactionManager" value="transactionManager"></property>
+        <property name="accountDao" ref="accountDao"/>
+        <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
     <bean id="authService" class="org.academiadecodigo.javabank.services.AuthServiceImpl">
-        <property name="customerService" value="customerService"></property>
+        <property name="customerService" ref="customerService"/>
     </bean>
 
     <bean id="customerService" class="org.academiadecodigo.javabank.services.CustomerServiceImpl">
-        <property name="transactionManager" value="transactionManager"></property>
-        <property name="customerDao" value="customerDao"></property>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="customerDao" ref="customerDao"/>
     </bean>
 
 </beans>
