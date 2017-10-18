@@ -75,11 +75,7 @@ have the view reading the model, either directly or indirectly via the controlle
 What can not happen is for the view to update the model directly. Model updates must always be done via the controller.
 
 With the introduction of a service layer abstracting the domain model and providing a clean API to the controllers,
-<<<<<<< HEAD
-all views now fetch data from controllers only, making this setup more like an MVP
-=======
 all views now fetch data from controllers only, making this setup more like an MVP
 
 ### Persistence notes
 * One-To-Many bi-directional relationship between Customer and Account
->>>>>>> 11a720931a3bb62e8273b1d6bda72fcf59150196
