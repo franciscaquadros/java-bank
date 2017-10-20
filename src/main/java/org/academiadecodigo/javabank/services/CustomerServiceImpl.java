@@ -1,5 +1,6 @@
 package org.academiadecodigo.javabank.services;
 
+import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
 import org.academiadecodigo.javabank.model.Customer;
 import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.persistence.dao.CustomerDao;
@@ -75,5 +76,10 @@ public class CustomerServiceImpl implements CustomerService {
         List<Account> accounts = customerDao.findById(id).getAccounts();
 
         return accounts;
+    }
+
+    @Override
+    public void delete(Integer id){
+        customerDao.delete(id);
     }
 }

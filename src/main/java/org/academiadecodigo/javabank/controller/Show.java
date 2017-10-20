@@ -32,4 +32,14 @@ public class Show {
         return "idcostumer-view";
 
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, path ="customer/{id}/delete")
+    public String deleteCustomer(@PathVariable Integer id){
+
+        customerService.delete(id);
+
+
+        return "redirect:costumer-view";
+
+    }
 }

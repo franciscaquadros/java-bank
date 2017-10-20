@@ -49,4 +49,9 @@ public class MockCustomerService extends AbstractMockService<Customer> implement
     public List<Account> getAccounts(Integer id) {
         return null;
     }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
 }

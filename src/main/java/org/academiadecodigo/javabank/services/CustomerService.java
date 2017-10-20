@@ -18,4 +18,6 @@ public interface CustomerService {
 
     List<Account> getAccounts(Integer id);
 
+    void delete(Integer id);
+
 }
