@@ -68,4 +68,12 @@ public class CustomerServiceImpl implements CustomerService {
         return accountIds;
 
     }
+
+    @Override
+    public List<Account> getAccounts(Integer id){
+
+        List<Account> accounts = customerDao.findById(id).getAccounts();
+
+        return accounts;
+    }
 }

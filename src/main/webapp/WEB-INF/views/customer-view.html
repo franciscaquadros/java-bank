@@ -13,12 +13,14 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
+            <th>Show</th>
         </tr>
         <tr th:each="customer : ${customers}">
             <td th:text="${customer.id}"></td>
             <td th:text="${customer.name}"></td>
             <td th:text="${customer.email}"></td>
             <td th:text="${customer.phone}"></td>
+            <td> <a th:href="${'/fq/customer/'+ customer.id}">Show</a></td>
         </tr>
     </table>
 </div>

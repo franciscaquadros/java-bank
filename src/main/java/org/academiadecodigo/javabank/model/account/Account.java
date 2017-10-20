@@ -2,6 +2,7 @@ package org.academiadecodigo.javabank.model.account;
 
 import org.academiadecodigo.javabank.model.AbstractModel;
 import org.academiadecodigo.javabank.model.Customer;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.persistence.*;
 
@@ -27,6 +28,7 @@ public abstract class Account extends AbstractModel {
         }
     }
 
+    @ModelAttribute
     public double getBalance() {
         return balance;
     }

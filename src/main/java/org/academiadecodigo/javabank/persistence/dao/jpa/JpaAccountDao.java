@@ -10,4 +10,6 @@ public class JpaAccountDao extends GenericJpaDao<Account> implements AccountDao 
     public JpaAccountDao() {
         super(Account.class);
     }
+
+
 }

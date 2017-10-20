@@ -44,4 +44,9 @@ public class MockCustomerService extends AbstractMockService<Customer> implement
 
         return accountIds;
     }
+
+    @Override
+    public List<Account> getAccounts(Integer id) {
+        return null;
+    }
 }
