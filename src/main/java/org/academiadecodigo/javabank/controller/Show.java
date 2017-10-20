@@ -33,13 +33,12 @@ public class Show {
 
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, path ="customer/{id}/delete")
-    public String deleteCustomer(@PathVariable Integer id){
+    @RequestMapping(method = RequestMethod.GET, path ="customer/delete/{id}")
+    public String deleteCustomer(@PathVariable Integer id, Model model){
 
         customerService.delete(id);
 
-
-        return "redirect:costumer-view";
+        return "redirect:/customer";
 
     }
 }

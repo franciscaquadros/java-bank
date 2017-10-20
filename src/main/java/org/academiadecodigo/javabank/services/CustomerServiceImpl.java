@@ -6,6 +6,7 @@ import org.academiadecodigo.javabank.model.account.Account;
 import org.academiadecodigo.javabank.persistence.dao.CustomerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
@@ -78,6 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
         return accounts;
     }
 
+    @Transactional
     @Override
     public void delete(Integer id){
         customerDao.delete(id);
